@@ -1,8 +1,14 @@
+<div class="mb-3">
+<input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz..">
+</div>
+{{filterText}}
+
+
 <ul class="list-group">
   <li (click)="setAllCurrentBrand()" [class]="getAllColorClass()" routerLink="/cars">Markalar</li>  
   <li
      routerLink="/cars/brand/{{brand.name}}" 
      (click)="setCurrentBrand(brand)" 
      [class]="getCurrentBrandClass(brand)" 
-     *ngFor="let brand of brands">{{brand.name}}</li>
+     *ngFor="let brand of brands |filterBrand:filterText">{{brand.name}}</li>
   </ul>
