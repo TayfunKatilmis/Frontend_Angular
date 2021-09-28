@@ -1,16 +1,32 @@
-<div class="row">
-  <div class="col-md-2" >
-<select  class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
-  <option  selected >Marka</option>
-  <option *ngFor="let car of carsDetail | filterDropdown:{{car.brandName}}" value="">{{car.brandName}}</option>
-</select>
-</div>
+<div class="container" class="d-flex justify-content-start" class="p-3 mb-2 bg-secondary text-white">
+  <div class="row"  >
+      <div class="text-left col-md-3" >
+          <select  [(ngModel)]="selectedBrand" class="form-select form-select-sm" aria-label="Model adı">
+              <option *ngFor="let brand of brands " [value]="brand.brandId">{{brand.name}} </option>
+          </select>
+      </div>
+      <div class="text-center col-md-3">
+          <select [(ngModel)]="selectedColor" class="form-select form-select-sm" aria-label="Renk adı">
+              <option *ngFor="let color of colors " [value]="color.colorId">{{color.name}} </option>
+          </select>
+          
+      </div>
+      <div class="text-center col-md-1" >
+          <button (click)="getCarsByFilter(selectedBrand,selectedColor)" type="submit" class="btn btn-primary mb-3">Filtrele</button>
+      </div>
+      <div class="text-center col-md-2" >
+        <button (click)="getCars()" type="submit" class="btn btn-danger mb-3">Temizle</button>
+    </div>
+    <div class="text-center col-md-3" >
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz..">
+  </div>
+  </div>
 </div>
 <div class="row">
   <div
     class="col-lg-4 col-md-6 shadow-lg p-3 mb-5 rounded"
     
-    *ngFor="let car of carsDetail"
+    *ngFor="let car of carsDetail |filterCar:filterText"
   >
       <div class="card border-0 mb-3" style="width: 18rem;">
         <img
@@ -30,7 +46,7 @@
             routerLink="/cars/{{ car.carName }}"
             class="card-title text-decoration-none h5"
             style="color: #007bff"
-            >{{ car.brandName }}
+            >{{ car.carName }}
           </a>
         </h4>
       </div>

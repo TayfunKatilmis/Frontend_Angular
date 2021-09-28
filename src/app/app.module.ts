@@ -14,7 +14,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 import { FilterColorPipe } from './pipes/filter-color.pipe';
-import { FilterDropdownPipe } from './pipes/filter-dropdown.pipe';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { FilterDropdownPipe } from './pipes/filter-dropdown.pipe';
     CarDetailComponent,
     FilterBrandPipe,
     FilterColorPipe,
-    FilterDropdownPipe,
+    FilterCarPipe,
   ],
   imports: [
     BrowserModule,
