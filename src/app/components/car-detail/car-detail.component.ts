@@ -15,6 +15,7 @@ export class CarDetailComponent implements OnInit {
   carsDetail:CarDetail[]=[];
   carImages:CarImages[]=[]
   currentImage:CarImages
+  currentRent:boolean=false;
   defaultPath = 'https://localhost:44380';
 
   constructor(private carService:CarService,private carImageService:CarImageService,
@@ -40,6 +41,9 @@ export class CarDetailComponent implements OnInit {
   }
   getCarImages(carId:number){
     this.carService.getCarsImagesByCarId(carId).subscribe(response=>this.carImages=response.data)
+  }
+  setCurrentCorrect(){
+    this.currentRent=true;
   }
   getPath(){
     return this.defaultPath

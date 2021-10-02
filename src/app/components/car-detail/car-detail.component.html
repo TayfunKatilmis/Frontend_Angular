@@ -42,7 +42,44 @@
       <li class="list-group-item"><strong>Model: </strong>{{car.modelYear}}</li>
   </ul>
   <br>
-  <button class="col-md-5 btn btn-success">Kirala</button>
+  <button  class="col-md-5 btn btn-success " (click)="setCurrentCorrect()">Kirala</button>
 </div>
 </div>
-</div> 
+</div>
+<br>
+<br>
+<hr>
+<div class="container" >
+<div class="row">
+<div *ngIf="currentRent==true">
+  <div class="text-center"><h3>Kiralama İşlemleri</h3></div>
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+        <strong>Kiralama Tarihi</strong>
+      </div>
+      <div class="col-xs-6 col-md-4 col-md-push-4">
+        <input type="date"class="form-control"></div>
+      </div>
+      <br><br>
+      <div class="row">
+      <div class="col-xs-12 col-md-4 col-md-4">
+        <strong>Teslim Tarihi</strong>
+      </div>
+      <div class="col-xs-12 col-md-4 col-md-push-4">
+        <input type="date"class="form-control">
+      </div>
+      <br><br><br><br><br>
+      <hr>
+      <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
+      <div class="row">
+        <br><br>
+      <div class="col-xs-6 col-md-4">
+        <strong>ÖDENECEK TUTAR=</strong></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <button>Doğrula</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
