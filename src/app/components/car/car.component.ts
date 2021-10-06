@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Car } from 'src/app/models/car';
 import { CarDetail } from 'src/app/models/carDetail';
@@ -30,7 +31,7 @@ export class CarComponent implements OnInit {
 
   defaultPath='https://localhost:44380'
 
-  constructor(private carImageService:CarImageService, private carService:CarService,private colorservice:ColorService,private brandService:BrandService,private activatedRoute:ActivatedRoute) { }
+  constructor(private carImageService:CarImageService, private toastrModule:ToastrService,private carService:CarService,private colorservice:ColorService,private brandService:BrandService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -57,6 +58,7 @@ export class CarComponent implements OnInit {
     })
   }
   getCars(){
+    this.toastrModule.success("Temizlendi ve Tüm arabalar listelendi.")
     this.carService.getCars().subscribe(response=>{
       this.carsDetail=response.data
     })
@@ -98,6 +100,7 @@ export class CarComponent implements OnInit {
     )
   }
   getCarsByFilter(brandId:number, colorId:number){
+    this.toastrModule.success("Araba Listelendi")
     this.carService.getColorAndBrandFilter(brandId,colorId).subscribe(response=>{
       this.carsDetail = response.data;
     })
